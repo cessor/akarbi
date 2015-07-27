@@ -1,0 +1,29 @@
+{
+  "name": "akarbi",
+  "version": "1.0.0",
+  "description": "AKtualisierung von ARBeitsgedächnisInhalten",
+  "main": "app.js",
+  "dependencies": {
+    "body-parser": "^1.10.2",
+    "compression": "^1.3.0",
+    "connect": "^3.3.4",
+    "finalhandler": "^0.3.3",
+    "express": "^4.11.1",
+    "serve-static": "^1.8.1",
+    "merge-descriptors": "^0.0.2"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/cessor/akarbi.git"
+  },
+  "author": {
+    "name": "Johannes Hofmeister",
+    "url":   "http://cessor.de"
+  },
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/cessor/akarbi/issues"
+  },
+  "homepage": "https://github.com/cessor/akarbi"
+}

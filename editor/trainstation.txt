@@ -1,0 +1,14 @@
+intervals=8:6
+trainWidth=150:150
+trainHeight=150:150
+waggonWidth=150:150
+waggonHeight=150:150
+startDelay=4000:2000
+trackY=67%:67%
+timeToStation=5950:4500
+waggonType=blueWaggon,greenWaggon,orangeWaggon,orangeWaggon,blueWaggon,greenWaggon,orangeWaggon,orangeWaggon:orangeWaggon,greenWaggon,orangeWaggon,greenWaggon,orangeWaggon,greenWaggon
+waggonTypeEnd=greenWaggon,orangeWaggon,orangeWaggon:orangeWaggon,greenWaggon
+trains=dieselLok:steamLok
+directions=leftIn,leftIn,rightOut,rightIn,leftOut,leftOut,leftIn,rightIn:rightOut,rightIn,leftOut,leftOut,leftIn,rightIn
+waggonAnimal=1,2,3,4,5,6,7,8:7,6,5,4,3,2
+waggonAnimalEnd=12,11,10:9,8

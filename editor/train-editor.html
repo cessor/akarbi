@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html ng-app="train">
+  <head>
+  <meta charset="utf8">
+  <link rel="stylesheet" type="text/css" href="bs/css/bootstrap.min.css">
+  <style>
+    .big-editor {
+      width: 100%;
+      height: 500px;
+      font-family: 'Lucida Console', 'Courier New', monospace;
+      font-size: 10px;
+    }
+  </style>
+  </head>
+
+  <body>
+    <div class="container" ng-controller="trialsController as trialsCtrl">
+      <div class="row" >
+
+        <!-- Links -->          
+        <div class="col-md-4">
+        <h1>Bahnhof</h1>
+
+        <h2>Durchgänge</h2>
+        <section>
+          <ul ng-repeat="trial in trials">
+            <li>
+              <a href="" ng-click="trialsCtrl.select($index)">Durchgang {{ $index + 1 }}</a>
+              <a href="" ng-click="trialsCtrl.remove($index)" class="btn btn-default btn-xs">
+                <span class="glyphicon glyphicon-remove"></span>
+              </a>
+            </li>
+          </ul>
+          <div ng-hide="trials.length">Es sind keine Durchgänge vorhanden!</div>
+          <button class="btn btn-success" ng-click="trialsCtrl.addTrial()">Hinzufügen</button>         
+        </section>
+
+
+        
+        <div id="file_modal" class="modal fade">
+          <div class="modal-dialog">
+            <form name="import-form">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Datei</h4>
+              </div>
+              <div class="modal-body">               
+                <textarea class="big-editor" ng-model="trialsCtrl.file"></textarea>
+              </div>
+              <div class="modal-footer">
+                <button type="button" ng-click="trialsCtrl.import()" class="btn btn-default pull-left" data-dismiss="modal">Import</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Schließen</button>
+              </div>
+            </div><!-- /.modal-content -->
+            </form>
+          </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+        <hr>
+        <button class="btn btn-lg btn-info" data-toggle="modal" data-target="#file_modal">Importieren <icon icon="'cloud-upload'"></icon></button>
+        <button class="btn btn-lg btn-primary" ng-click="trialsCtrl.export()" data-toggle="modal" data-target="#file_modal">Exportieren <icon icon="'floppy-disk'"></button>
+
+
+        </div>
+
+        <!-- Rechts -->      
+        <div class="col-md-8">
+          <div ng-hide="trialsCtrl.index >= 0" class="alert alert-info">Kein Durchgang ausgewählt</div>
+          <div ng-show="trialsCtrl.index >= 0">
+            <h1>Durchgang {{ trialsCtrl.index + 1 }}</h1>  
+              <h2>Bewegungen</h2>
+            <div ng-hide="trial.setup.length > 0">Es sind keine Bewegungen vorhanden!</div>
+            <table class="table" ng-show="trial.setup && trial.setup.length > 0"> 
+              <tr>
+                <th>#</th>
+                <th>Tier</th>
+                <th>Richtung</th>
+                <th>Farbe des Waggons</th>
+                <th></th>
+              </tr>
+              <tr ng-repeat="step in trial.setup">
+                <td>{{ $index + 1}}</td>
+                <td>
+                  <select ng-model="step.waggonAnimal" ng-options="(animalTypes.indexOf(a)+1) as a for a in animalTypes">
+                    <option value="">-- Tier --</option>
+                  </select>
+                </td>
+                <td>
+                  <select ng-model="step.directions" ng-options="d.value as d.key for d in directions">
+                    <option value="">-- Richtung --</option>
+                  </select>
+                </td>
+                <td>
+                  <select ng-model="step.waggonType" ng-options="c.value as c.key for c in colors">
+                    <option value="">-- Farbe --</option>
+                  </select>
+
+                </td>
+                <td>
+                  <a href="" ng-click="trialsCtrl.removeMovement(trial, $index)" class="btn btn-default btn-xs">
+                    <span class="glyphicon glyphicon-remove"></span>
+                  </a>
+                </td>
+              </tr>
+            </table>
+            <button class="btn btn-success" ng-click="trialsCtrl.addMovement(trial)">Hinzufügen</button>
+
+            <h2>Ende</h2>
+            <div ng-hide="trial.targets.length > 0">Es sind keine Bewegungen vorhanden!</div>
+            <table class="table" ng-show="trial.targets && trial.targets.length > 0"> 
+              <tr>
+                <th>#</th>
+                <th>Tier</th>
+                <th></th>
+                <th>Farbe des Waggons</th>
+                <th></th>
+              </tr>
+              <tr ng-repeat="target in trial.targets">
+                <td>{{ $index + 1}}</td>
+                <td>
+                  <select ng-model="target.waggonAnimalEnd" ng-options="(animalTypes.indexOf(a)+1) as a for a in animalTypes">
+                    <option value="">-- Tier --</option>
+                  </select>
+                </td>
+                <td>
+                </td>
+                <td>
+                  <select ng-model="target.waggonTypeEnd" ng-options="c.value as c.key for c in colors">
+                    <option value="">-- Farbe --</option>
+                  </select>
+                </td>
+                <td>
+                  <a href="" ng-click="trialsCtrl.removeTarget(trial, $index)" class="btn btn-default btn-xs">
+                    <span class="glyphicon glyphicon-remove"></span>
+                  </a>
+                </td>
+              </tr>
+            </table>
+            <button class="btn btn-success" ng-click="trialsCtrl.addTarget(trial)">Hinzufügen</button>
+
+            <h2>Config</h2>
+            <div>
+              <table class="table table-condensed">  
+                <tr>
+                  <th>Key</th>
+                  <th>Value</th>
+                </tr>
+                <tr ng-repeat="(key,value) in trial.config">
+                  <th><label>{{ key }}</label></th>
+                  <th><input ng-model="value" value="value"></th>
+                </tr>
+              </table>  
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script type="text/javascript" src="angular.min.js"></script>
+  <script type="text/javascript" src="underscore-min.js"></script>
+  <script type="text/javascript" src="bs/js/jquery-2.1.1.min.js"></script>
+  <script type="text/javascript" src="bs/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="train-app.js"></script>
+  <script type="text/javascript" src="train-structure.js"></script>
+  <script type="text/javascript" src="beach-structure.js"></script>
+  <script type="text/javascript" src="beach-serialization.js"></script>
+  
+  <script></script>
+</html>

@@ -1,0 +1,471 @@
+{
+    "trials": [
+        {
+            "$$hashKey": "00R", 
+            "config": {
+                "parasolHeight": 200, 
+                "rows": 2, 
+                "dist": 400, 
+                "figureHeight": 130, 
+                "intervall": 1400, 
+                "waitBetween": 5000, 
+                "jumpDist": 30, 
+                "cols": 3, 
+                "parasols": "1,2,3,4,5,6", 
+                "iterations": 3, 
+                "offSet": 50, 
+                "parasolWidth": 200, 
+                "questionmarkPosition": "50%", 
+                "figureWidth": 130
+            }, 
+            "targets": [
+                {
+                    "position": 5, 
+                    "$$hashKey": "01Q", 
+                    "animal": "gorilla"
+                }, 
+                {
+                    "position": 0, 
+                    "$$hashKey": "01R", 
+                    "animal": "dog"
+                }, 
+                {
+                    "position": 1, 
+                    "$$hashKey": "01S", 
+                    "animal": "pinguin"
+                }
+            ], 
+            "movements": [
+                {
+                    "to": 4, 
+                    "$$hashKey": "01B", 
+                    "from": 2, 
+                    "animal": "gorilla"
+                }, 
+                {
+                    "to": 1, 
+                    "$$hashKey": "01C", 
+                    "from": 0, 
+                    "animal": "dog"
+                }, 
+                {
+                    "to": 2, 
+                    "$$hashKey": "01D", 
+                    "from": 5, 
+                    "animal": "pinguin"
+                }, 
+                {
+                    "to": 3, 
+                    "$$hashKey": "022", 
+                    "from": 1, 
+                    "animal": "dog"
+                }
+            ]
+        }, 
+        {
+            "$$hashKey": "00S", 
+            "config": {
+                "parasolHeight": 200, 
+                "rows": 2, 
+                "dist": 400, 
+                "figureHeight": 130, 
+                "intervall": 1400, 
+                "waitBetween": 5000, 
+                "jumpDist": 30, 
+                "cols": 3, 
+                "parasols": "1,2,3,4,5,6", 
+                "iterations": 3, 
+                "offSet": 50, 
+                "parasolWidth": 200, 
+                "questionmarkPosition": "50%", 
+                "figureWidth": 130
+            }, 
+            "targets": [
+                {
+                    "position": 4, 
+                    "animal": "gopher"
+                }, 
+                {
+                    "position": 0, 
+                    "animal": "chameleon"
+                }
+            ], 
+            "movements": [
+                {
+                    "to": 4, 
+                    "from": 5, 
+                    "animal": "gopher"
+                }, 
+                {
+                    "to": 0, 
+                    "from": 3, 
+                    "animal": "chameleon"
+                }
+            ]
+        }, 
+        {
+            "$$hashKey": "00T", 
+            "config": {
+                "parasolHeight": 200, 
+                "rows": 2, 
+                "dist": 400, 
+                "figureHeight": 130, 
+                "intervall": 1400, 
+                "waitBetween": 5000, 
+                "jumpDist": 30, 
+                "cols": 3, 
+                "parasols": "1,2,3,4,5,6", 
+                "iterations": 3, 
+                "offSet": 50, 
+                "parasolWidth": 200, 
+                "questionmarkPosition": "50%", 
+                "figureWidth": 130
+            }, 
+            "targets": [
+                {
+                    "position": 2, 
+                    "animal": "gnu"
+                }, 
+                {
+                    "position": 4, 
+                    "animal": "donkey"
+                }, 
+                {
+                    "position": 3, 
+                    "animal": "lion"
+                }
+            ], 
+            "movements": [
+                {
+                    "to": 1, 
+                    "from": 0, 
+                    "animal": "gnu"
+                }, 
+                {
+                    "to": 5, 
+                    "from": 2, 
+                    "animal": "donkey"
+                }, 
+                {
+                    "to": 4, 
+                    "from": 3, 
+                    "animal": "lion"
+                }
+            ]
+        }, 
+        {
+            "$$hashKey": "00U", 
+            "config": {
+                "parasolHeight": 200, 
+                "rows": 2, 
+                "dist": 400, 
+                "figureHeight": 130, 
+                "intervall": 1400, 
+                "waitBetween": 5000, 
+                "jumpDist": 30, 
+                "cols": 3, 
+                "parasols": "1,2,3,4,5,6", 
+                "iterations": 3, 
+                "offSet": 50, 
+                "parasolWidth": 200, 
+                "questionmarkPosition": "50%", 
+                "figureWidth": 130
+            }, 
+            "targets": [
+                {
+                    "position": 2, 
+                    "animal": "cat"
+                }, 
+                {
+                    "position": 0, 
+                    "animal": "pinguin"
+                }, 
+                {
+                    "position": 1, 
+                    "animal": "ape"
+                }
+            ], 
+            "movements": [
+                {
+                    "to": 2, 
+                    "from": 1, 
+                    "animal": "cat"
+                }, 
+                {
+                    "to": 0, 
+                    "from": 4, 
+                    "animal": "pinguin"
+                }, 
+                {
+                    "to": 1, 
+                    "from": 3, 
+                    "animal": "ape"
+                }
+            ]
+        }, 
+        {
+            "$$hashKey": "00V", 
+            "config": {
+                "parasolHeight": 200, 
+                "rows": 2, 
+                "dist": 400, 
+                "figureHeight": 130, 
+                "intervall": 1400, 
+                "waitBetween": 5000, 
+                "jumpDist": 30, 
+                "cols": 3, 
+                "parasols": "1,2,3,4,5,6", 
+                "iterations": 3, 
+                "offSet": 50, 
+                "parasolWidth": 200, 
+                "questionmarkPosition": "50%", 
+                "figureWidth": 130
+            }, 
+            "targets": [
+                {
+                    "position": 5, 
+                    "animal": "kakadu"
+                }, 
+                {
+                    "position": 4, 
+                    "animal": "gorilla"
+                }
+            ], 
+            "movements": [
+                {
+                    "to": 2, 
+                    "from": 4, 
+                    "animal": "kakadu"
+                }, 
+                {
+                    "to": 3, 
+                    "from": 0, 
+                    "animal": "gorilla"
+                }
+            ]
+        }, 
+        {
+            "$$hashKey": "00W", 
+            "config": {
+                "parasolHeight": 200, 
+                "rows": 2, 
+                "dist": 400, 
+                "figureHeight": 130, 
+                "intervall": 1400, 
+                "waitBetween": 5000, 
+                "jumpDist": 30, 
+                "cols": 3, 
+                "parasols": "1,2,3,4,5,6", 
+                "iterations": 3, 
+                "offSet": 50, 
+                "parasolWidth": 200, 
+                "questionmarkPosition": "50%", 
+                "figureWidth": 130
+            }, 
+            "targets": [
+                {
+                    "position": 2, 
+                    "animal": "lama"
+                }, 
+                {
+                    "position": 5, 
+                    "animal": "chameleon"
+                }
+            ], 
+            "movements": [
+                {
+                    "to": 1, 
+                    "from": 0, 
+                    "animal": "lama"
+                }, 
+                {
+                    "to": 4, 
+                    "from": 3, 
+                    "animal": "chameleon"
+                }
+            ]
+        }, 
+        {
+            "$$hashKey": "00X", 
+            "config": {
+                "parasolHeight": 200, 
+                "rows": 2, 
+                "dist": 400, 
+                "figureHeight": 130, 
+                "intervall": 1400, 
+                "waitBetween": 5000, 
+                "jumpDist": 30, 
+                "cols": 3, 
+                "parasols": "1,2,3,4,5,6", 
+                "iterations": 3, 
+                "offSet": 50, 
+                "parasolWidth": 200, 
+                "questionmarkPosition": "50%", 
+                "figureWidth": 130
+            }, 
+            "targets": [
+                {
+                    "position": 1, 
+                    "animal": "dog"
+                }, 
+                {
+                    "position": 1, 
+                    "animal": "gnu"
+                }, 
+                {
+                    "position": 0, 
+                    "animal": "ape"
+                }
+            ], 
+            "movements": [
+                {
+                    "to": 1, 
+                    "from": 5, 
+                    "animal": "dog"
+                }, 
+                {
+                    "to": 1, 
+                    "from": 2, 
+                    "animal": "gnu"
+                }, 
+                {
+                    "to": 0, 
+                    "from": 3, 
+                    "animal": "ape"
+                }
+            ]
+        }, 
+        {
+            "$$hashKey": "00Y", 
+            "config": {
+                "parasolHeight": 200, 
+                "rows": 2, 
+                "dist": 400, 
+                "figureHeight": 130, 
+                "intervall": 1400, 
+                "waitBetween": 5000, 
+                "jumpDist": 30, 
+                "cols": 3, 
+                "parasols": "1,2,3,4,5,6", 
+                "iterations": 3, 
+                "offSet": 50, 
+                "parasolWidth": 200, 
+                "questionmarkPosition": "50%", 
+                "figureWidth": 130
+            }, 
+            "targets": [
+                {
+                    "position": 0, 
+                    "animal": "cat"
+                }, 
+                {
+                    "position": 5, 
+                    "animal": "lion"
+                }
+            ], 
+            "movements": [
+                {
+                    "to": 2, 
+                    "from": 4, 
+                    "animal": "cat"
+                }, 
+                {
+                    "to": 3, 
+                    "from": 1, 
+                    "animal": "lion"
+                }
+            ]
+        }, 
+        {
+            "$$hashKey": "00Z", 
+            "config": {
+                "parasolHeight": 200, 
+                "rows": 2, 
+                "dist": 400, 
+                "figureHeight": 130, 
+                "intervall": 1400, 
+                "waitBetween": 5000, 
+                "jumpDist": 30, 
+                "cols": 3, 
+                "parasols": "1,2,3,4,5,6", 
+                "iterations": 3, 
+                "offSet": 50, 
+                "parasolWidth": 200, 
+                "questionmarkPosition": "50%", 
+                "figureWidth": 130
+            }, 
+            "targets": [
+                {
+                    "position": 2, 
+                    "animal": "pinguin"
+                }, 
+                {
+                    "position": 5, 
+                    "animal": "gorilla"
+                }, 
+                {
+                    "position": 1, 
+                    "animal": "gopher"
+                }
+            ], 
+            "movements": [
+                {
+                    "to": 4, 
+                    "from": 0, 
+                    "animal": "pinguin"
+                }, 
+                {
+                    "to": 1, 
+                    "from": 3, 
+                    "animal": "gorilla"
+                }, 
+                {
+                    "to": 5, 
+                    "from": 2, 
+                    "animal": "gopher"
+                }
+            ]
+        }, 
+        {
+            "$$hashKey": "010", 
+            "config": {
+                "parasolHeight": 200, 
+                "rows": 2, 
+                "dist": 400, 
+                "figureHeight": 130, 
+                "intervall": 1400, 
+                "waitBetween": 5000, 
+                "jumpDist": 30, 
+                "cols": 3, 
+                "parasols": "1,2,3,4,5,6", 
+                "iterations": 3, 
+                "offSet": 50, 
+                "parasolWidth": 200, 
+                "questionmarkPosition": "50%", 
+                "figureWidth": 130
+            }, 
+            "targets": [
+                {
+                    "position": 1, 
+                    "animal": "donkey"
+                }, 
+                {
+                    "position": 4, 
+                    "animal": "lama"
+                }
+            ], 
+            "movements": [
+                {
+                    "to": 1, 
+                    "from": 0, 
+                    "animal": "donkey"
+                }, 
+                {
+                    "to": 4, 
+                    "from": 3, 
+                    "animal": "lama"
+                }
+            ]
+        }
+    ]
+}

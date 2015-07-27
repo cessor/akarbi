@@ -1,0 +1,1 @@
+powershell -Command Invoke-WebRequest -OutFile node.exe https://nodejs.org/dist/v0.12.7/node.exe

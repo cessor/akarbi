@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html ng-app="beach">
+  <head>
+  <meta charset="utf8">
+  <link rel="stylesheet" type="text/css" href="bs/css/bootstrap.min.css">
+  <style>
+    .big-editor {
+      width: 100%;
+      height: 500px;
+      font-family: 'Lucida Console', 'Courier New', monospace;
+      font-size: 10px;
+    }
+  </style>
+  </head>
+
+  <body ng-controller="PageController as pageController">
+  <div class="container" >
+    <div class="row" ng-controller="TrialsController as trialsCtrl">
+      <!-- Trials -->
+      <div class="col-md-4">
+        <h1>Strand</h1>
+        <img src="beach/parasol-interface.png" height="150" width="150">
+        <h2>Durchgänge</h2>
+        <section>
+          <ul ng-repeat="trial in trialsCtrl.trials">
+            <li>
+              <a href="" ng-click="trialsCtrl.select($index)">Durchgang {{ $index + 1 }} ({{ trial.movements.length }}) </a>
+              <a href="" ng-click="trialsCtrl.remove($index)" class="btn btn-default btn-xs">
+                <span class="glyphicon glyphicon-remove"></span>
+              </a>
+            </li>
+          </ul>
+          <div ng-hide="trialsCtrl.trials.length">Es sind keine Durchgänge vorhanden!</div>
+          <button class="btn btn-success" ng-click="trialsCtrl.addTrial()"><icon icon="'plus-sign'"></icon> Hinzufügen</button>
+        </section>
+        <hr>
+
+        <!-- File -->
+        <h3>Datei</h3>
+        <select ng-model="trialsCtrl.context" class="form-control">
+          <option value="beach">Erhebung</option>
+          <option value="training">Training</option>
+        </select>
+        <br>
+        <!-- Importieren -->
+        <button class="btn btn-lg btn-info" ng-click="trialsCtrl.import()">
+          <icon icon="'cloud-upload'"></icon> Öffnen
+        </button>
+        <!-- Exportieren -->
+        <button class="btn btn-lg btn-primary" ng-click="trialsCtrl.export()" >
+          <icon icon="'floppy-disk'"></icon> Speichern
+        </button>
+        <hr>
+
+
+
+        <!-- Test -->
+        <h1>Test</h1>
+        <!-- Normal -->
+        <a class="btn btn-md btn-info" href="/" target="_new"><icon icon="'play'"></icon> Normal</a>
+        <a class="btn btn-md btn-info" href="/#debug" target="_new"><icon icon="'forward'"></icon> Schnell</a>
+        <a class="btn btn-md btn-info" href="/#debugauto" target="_new"><icon icon="'fast-forward'"></icon> Ende Zu Ende</a>
+
+        <!-- configuration -->
+        <h3>Konfiguration</h3>
+        <button class="btn btn-lg btn-default" data-toggle="modal" data-target="#configuration_modal">Bearbeiten</button>
+        <div id="configuration_modal" class="modal fade" ng-controller="ConfigurationController as configCtrl">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Konfiguration</h4>
+              </div>
+              <div class="modal-body">
+                <form >
+                  <table>
+                    <tr ng-repeat="label in fields">
+                      <td><label class="pull-right">{{label}} &nbsp;</label></td>
+                      <td><input ng-model="config[label]"></td>
+                    </tr>
+                  </table>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Speichern</button>
+
+              </div>
+            </div><!-- /.modal-content -->
+          </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+
+        <hr>
+
+
+
+        <div id="upload_modal" class="modal fade">
+          <div class="modal-dialog modal-lg">
+            <form name="import-form" ng-submit="trialsCtrl.importOld()">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Konfiguration</h4>
+              </div>
+              <div class="modal-body">
+                <textarea class="big-editor" ng-model="trialsCtrl.importFile"></textarea>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Schließen</button>
+                <button type="submit" class="btn btn-primary">Ok</button>
+              </div>
+            </div><!-- /.modal-content -->
+            </form>
+          </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+
+
+        <!-- Import Old -->
+        <button type="button" class="btn btn-lg btn-default text-muted" data-toggle="modal" data-target="#upload_modal"><icon icon="'upload'"></icon> Import Old</button>
+        <!-- Export Old -->
+        <button type="button" class="btn btn-lg btn-default text-muted" ng-click="trialsCtrl.exportOld()"><icon icon="'download'"></icon> Export Old</button>
+      </div>
+
+      <!-- Rechts -->
+      <div class="col-md-8">
+        <div ng-show="trialsCtrl.saved" class="alert alert-success">Speichern erfolgreich!</div>
+
+        <div ng-hide="trialsCtrl.index >= 0" class="alert alert-info">Kein Durchgang ausgewählt</div>
+        <div ng-show="trialsCtrl.index >= 0" ng-controller="MovementsController as movementsCtrl">
+          <h1>Durchgang {{ trialsCtrl.index + 1 }}</h1>
+
+
+          <!-- Movements -->
+          <h2>Bewegungen</h2>
+          <div ng-hide="movementsCtrl.some(trialsCtrl.trial)">Es sind keine Bewegungen vorhanden!</div>
+          <table class="table" ng-show="movementsCtrl.some(trialsCtrl.trial)">
+            <tr>
+              <th>#</th>
+              <th>Tier</th>
+              <th>Von</th>
+              <th>Nach</th>
+              <th>Entfernen</th>
+            </tr>
+            <tr ng-repeat="movement in movementsCtrl.movements(trialsCtrl.trial)">
+              <td>{{ $index + 1}}</td>
+              <td>
+                <img ng-src="{{ '/static/assets/animals/' + movement.animal + '.png' }}" width="24" height="24">
+                <select-animals model="movement.animal" items="animals"></select-animals>
+              </td>
+              <td>
+                <select-position model="movement.from" items="positions" placeholder="'Von'"></select-position>
+              </td>
+              <td>
+                <select-position model="movement.to" items="positions" placeholder="'Nach'"></select-position>
+              </td>
+              <td>
+                <a href="" ng-click="movementsCtrl.remove(trialsCtrl.trial, $index)" class="btn btn-default btn-xs">
+                  <span class="glyphicon glyphicon-remove"></span>
+                </a>
+              </td>
+            </tr>
+          </table>
+
+          <!-- Add -->
+          <button class="btn btn-success" ng-click="movementsCtrl.addMovement(trialsCtrl.trial)"><icon icon="'plus-sign'"></icon> Hinzufügen</button>
+          <button class="btn btn-primary" ng-disabled="!movementsCtrl.movements(trialsCtrl.trial).length" ng-click="trialsCtrl.copyTargets()">
+            <span class="glyphicon glyphicon-arrow-down"></span> Copy
+          </button>
+        </div>
+
+        <!-- Discoveries -->
+        <div ng-show="trialsCtrl.index >= 0" ng-controller="TargetsController as targetsCtrl">
+          <h2>Endpositionen</h2>
+          <div ng-hide="targetsCtrl.some(trialsCtrl.trial)">Es sind keine Endpositionen vorhanden!</div>
+          <table class="table" ng-show="targetsCtrl.some(trialsCtrl.trial)">
+            <tr>
+              <th>#</th>
+              <th>Tier</th>
+              <th>Ende</th>
+              <th>Entfernen</th>
+            </tr>
+            <tr ng-repeat="target in targetsCtrl.targets(trialsCtrl.trial)">
+              <td>{{$index + 1}}</td>
+              <td>
+                <img ng-src="{{ '/static/assets/animals/' + target.animal + '.png' }}" width="24" height="24">
+                <select-animals model="target.animal" items="animals"></select-animals>
+              </td>
+              <td>
+                <select-position model="target.position" items="positions" placeholder="'Ende'"></select-position>
+              </td>
+              <td>
+                <a href="" ng-click="targetsCtrl.remove(trialsCtrl.trial, $index)" class="btn btn-default btn-xs">
+                  <span class="glyphicon glyphicon-remove"></span>
+                </a>
+              </td>
+             </tr>
+          </table>
+          <button class="btn btn-success" ng-click="targetsCtrl.addTarget(trialsCtrl.trial)"><icon icon="'plus-sign'"></icon> Hinzufügen</button>
+        </div>
+
+        <!-- Test -->
+        <div ng-show="trialsCtrl.index >= 0" ng-controller="TargetsController as targetsCtrl">
+          <h2>Test</h2>
+          <a class="btn btn-md btn-info" ng-href="/#{{ trialsCtrl.index + 1 }}{{ trialsCtrl.context }}" target="_new"><icon icon="'play'"></icon> Normal</a>
+          <a class="btn btn-md btn-info" ng-href="/#debug{{ trialsCtrl.index + 1 }}{{ trialsCtrl.context }}" target="_new"><icon icon="'forward'"></icon> Schnell</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  </body>
+  <script type="text/javascript" src="angular.min.js"></script>
+  <script type="text/javascript" src="underscore-min.js"></script>
+  <script type="text/javascript" src="bs/js/jquery-2.1.1.min.js"></script>
+  <script type="text/javascript" src="bs/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="beach-app.js"></script>
+  <script type="text/javascript" src="beach-structure.js"></script>
+  <script type="text/javascript" src="beach-serialization.js"></script>
+  <script type="text/javascript" src="beach-controls.js"></script>
+
+  <script></script>
+</html>

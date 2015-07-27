@@ -1,0 +1,14 @@
+
+ng-model="review.body"
+ng-options="stars for stars in [5,4,3,2,1]"
+ng-init="tab = 1" 
+ng-controller="PanelController as panel"
+ng-repeat="product in store.products
+ng-app="store"
+ng-show="panel.isSelected(2)"
+ng-hide="panel.isSelected(2)"
+ng-class="{ active:panel.isSelected(2) }"
+ng-repeat="product in store.products"
+ng-submit="reviewController.addReview(product)"
+ng-hide="reviewForm.$valid"
+{{product.price | currency }}
